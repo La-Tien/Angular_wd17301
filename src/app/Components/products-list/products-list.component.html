@@ -1,0 +1,38 @@
+<div class="container">
+    <p>products-list works!</p>
+    <h1>{{title}}</h1>
+    <hr>
+    {{status?"On":"Off"}}
+    <button (click)="toggle()">Toggle</button>
+    <hr>
+    <input type="text" (input)="setValue($event)">
+    {{valueInput}}
+
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="products && products.length">
+
+            <tr *ngFor="let products of products; index as i">
+                <td>{{i + 1}}</td>
+                <!-- <td>{{product[0]._id}}</td> -->
+                <td><img src="{{products.img}}" alt="" /></td>
+                <td>{{products.name}}</td>
+                <td>{{products.price}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="removeItem(products.id)">Xoa</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" routerLink="{{products.id}}/edit">Sua</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
